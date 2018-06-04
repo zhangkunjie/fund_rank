@@ -28,7 +28,7 @@
         <setting name="jdbcTypeForNull" value="NULL"/>
     </settings>
     <typeAliases>
-        <package name="com.ssm.model"/>
+        <package name="com.fundrank.model"/>
     </typeAliases>
     <plugins>
         <plugin interceptor="com.github.pagehelper.PageInterceptor">
