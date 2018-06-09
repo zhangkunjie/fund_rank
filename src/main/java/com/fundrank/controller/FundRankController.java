@@ -3,6 +3,7 @@ package com.fundrank.controller;
 import com.fundrank.common.utils.JsonCallBack;
 import com.fundrank.model.FundRank;
 import com.fundrank.model.Student;
+import com.fundrank.model.vo.FundRankVO;
 import com.fundrank.service.FundRankService;
 import com.fundrank.service.StudentService;
 import com.github.pagehelper.PageInfo;
@@ -30,13 +31,13 @@ public class FundRankController {
     @CrossOrigin
     @ResponseBody
     @RequestMapping(value = "/findPage/{pageSize}/{pageNo}", method = RequestMethod.POST)
-    public JsonCallBack findPage(@RequestBody FundRank fundRank,
+    public JsonCallBack findPage(@RequestBody FundRankVO fundRankVO,
                                   @PathVariable int pageSize,@PathVariable int pageNo) {
         logger.info("findPage called");
         JsonCallBack jsonCallBack = new JsonCallBack(true);
         Map<String, Object> pairs = jsonCallBack.getPairs();
         try {
-            PageInfo<FundRank> pageInfo = fundRankService.findPage(fundRank, pageNo, pageSize);
+            PageInfo<FundRank> pageInfo = fundRankService.findFundRankPage(fundRankVO, pageNo, pageSize);
             pairs.put("dat", pageInfo);
         } catch (Exception e) {
             jsonCallBack.setSuccess(false);

@@ -1,8 +1,12 @@
 package com.fundrank.dao;
 
 import com.fundrank.model.FundRank;
+import com.fundrank.model.vo.FundRankVO;
 
-public interface FundRankDao extends BaseDao<FundRank, Long> {
+import java.util.List;
+
+public interface FundRankDao extends BaseDao<FundRankVO, Long> {
+    List<FundRank> findFundRankPage(FundRankVO fundRankVO);
     /*int deleteByPrimaryKey(Long id);
 
     int insert(FundRank record);

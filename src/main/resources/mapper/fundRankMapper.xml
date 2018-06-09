@@ -263,16 +263,81 @@
         where id = #{id,jdbcType=BIGINT}
       </update>
     -->
-
     <!-- id 固定的 findPaging parameterType 固定的 pageModel params.entity固定写法 -->
-    <select id="findPage" parameterType="fundRank" resultMap="FundRankRM">
+    <select id="findFundRankPage" parameterType="fundRankVO" resultMap="FundRankRM">
         SELECT
         <include refid="Base_Column_List"/>
         FROM
         fund_rank as FundRank
+        <where>
+            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(category)">
+                AND FundRank.category in (${category})
+            </if>
+            <if test="minOnemonth!=null">
+                AND FundRank.onemonth&gt;=${minOnemonth}
+            </if>
+            <if test="maxOnemonth!=null">
+                AND FundRank.onemonth&lt;=${maxOnemonth}
+            </if>
+            <if test="minThreemonth!=null">
+                AND FundRank.threemonth&gt;=${minThreemonth}
+            </if>
+            <if test="maxThreemonth!=null">
+                AND FundRank.threemonth&lt;=${maxThreemonth}
+            </if>
+            <if test="minSixmonth!=null">
+                AND FundRank.sixmonth&gt;=${minSixmonth}
+            </if>
+            <if test="maxSixmonth!=null">
+                AND FundRank.sixmonth&lt;=${maxSixmonth}
+            </if>
+
+            <if test="minOneyear!=null">
+                AND FundRank.oneyear&gt;=${minOneyear}
+            </if>
+            <if test="maxSixmonth!=null">
+                AND FundRank.oneyear&lt;=${maxOneyear}
+            </if>
+
+
+            <if test="minTwoyear!=null">
+                AND FundRank.twoyear&gt;=${minTwoyear}
+            </if>
+            <if test="maxTwoyear!=null">
+                AND FundRank.twoyear&lt;=${maxTwoyear}
+            </if>
+
+            <if test="minThreeyear!=null">
+                AND FundRank.threeyear&gt;=${minThreeyear}
+            </if>
+            <if test="maxThreeyear!=null">
+                AND FundRank.threeyear&lt;=${maxThreeyear}
+            </if>
+
+            <if test="minThisyear!=null">
+                AND FundRank.thisyear&gt;=${minThisyear}
+            </if>
+            <if test="maxThisyear!=null">
+                AND FundRank.thisyear&lt;=${maxThisyear}
+            </if>
+            <if test="minSetup!=null">
+                AND FundRank.setup&gt;=${minSetup}
+            </if>
+            <if test="maxSetup!=null">
+                AND FundRank.setup&lt;=${maxSetup}
+            </if>
+            <if test="minScore!=null">
+                AND FundRank.score&gt;=${minScore}
+            </if>
+            <if test="maxSetup!=null">
+                AND FundRank.score&lt;=${maxScore}
+            </if>
+        </where>
         <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(orderColumn)">
-            ORDER BY  ${orderColumn} ${orderBy}
+            ORDER BY ${orderColumn} ${orderBy}
         </if>
+
+
         <!-- <where>
            <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(name)">
              AND .`name` like CONCAT('%',"\\" #{name},'%' )

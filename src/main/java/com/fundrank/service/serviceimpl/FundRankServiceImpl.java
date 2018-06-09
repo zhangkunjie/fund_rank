@@ -4,6 +4,7 @@ import com.fundrank.dao.FundRankDao;
 import com.fundrank.dao.StudentDao;
 import com.fundrank.model.FundRank;
 import com.fundrank.model.Student;
+import com.fundrank.model.vo.FundRankVO;
 import com.fundrank.service.FundRankService;
 import com.fundrank.service.StudentService;
 import com.github.pagehelper.PageHelper;
@@ -29,9 +30,9 @@ public class FundRankServiceImpl implements FundRankService {
     /*
     分页查找
     * */
-    public PageInfo<FundRank> findPage(FundRank fundRank, int pageNo, int pageSize) {
+    public PageInfo<FundRank> findFundRankPage(FundRankVO fundRankVO, int pageNo, int pageSize) {
         PageHelper.startPage(pageNo, pageSize);
-        List<FundRank> list = fundRankDao.findPage(fundRank);
+        List<FundRank> list = fundRankDao.findFundRankPage(fundRankVO);
         PageInfo<FundRank> pageInfo = new PageInfo<FundRank>(list);
         return pageInfo;
     }
