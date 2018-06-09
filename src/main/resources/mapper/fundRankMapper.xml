@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fundrank.dao.FundRankDao">
+    <resultMap id="FundRankRM" type="com.fundrank.model.FundRank">
+        <id column="FundRank_id" jdbcType="BIGINT" property="id"/>
+        <result column="FundRank_fund_id" jdbcType="VARCHAR" property="fundId"/>
+        <result column="FundRank_fund_name" jdbcType="VARCHAR" property="fundName"/>
+        <result column="FundRank_fund_name_abbr" jdbcType="VARCHAR" property="fundNameAbbr"/>
+        <result column="FundRank_cal_date" jdbcType="VARCHAR" property="calDate"/>
+        <result column="FundRank_net_asset_value" jdbcType="REAL" property="netAssetValue"/>
+        <result column="FundRank_accumulative" jdbcType="REAL" property="accumulative"/>
+        <result column="FundRank_oneday" jdbcType="REAL" property="oneday"/>
+        <result column="FundRank_oneweek" jdbcType="REAL" property="oneweek"/>
+        <result column="FundRank_onemonth" jdbcType="REAL" property="onemonth"/>
+        <result column="FundRank_threemonth" jdbcType="REAL" property="threemonth"/>
+        <result column="FundRank_sixmonth" jdbcType="REAL" property="sixmonth"/>
+        <result column="FundRank_oneyear" jdbcType="REAL" property="oneyear"/>
+        <result column="FundRank_twoyear" jdbcType="REAL" property="twoyear"/>
+        <result column="FundRank_threeyear" jdbcType="REAL" property="threeyear"/>
+        <result column="FundRank_thisyear" jdbcType="REAL" property="thisyear"/>
+        <result column="FundRank_setup" jdbcType="REAL" property="setup"/>
+        <result column="FundRank_category" jdbcType="VARCHAR" property="category"/>
+        <result column="FundRank_score" jdbcType="REAL" property="score"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    FundRank.id as FundRank_id, FundRank.fund_id as FundRank_fund_id, FundRank.fund_name as FundRank_fund_name, 
+    FundRank.fund_name_abbr as FundRank_fund_name_abbr, FundRank.cal_date as FundRank_cal_date, 
+    FundRank.net_asset_value as FundRank_net_asset_value, FundRank.accumulative as FundRank_accumulative, 
+    FundRank.oneday as FundRank_oneday, FundRank.oneweek as FundRank_oneweek, FundRank.onemonth as FundRank_onemonth, 
+    FundRank.threemonth as FundRank_threemonth, FundRank.sixmonth as FundRank_sixmonth, 
+    FundRank.oneyear as FundRank_oneyear, FundRank.twoyear as FundRank_twoyear, FundRank.threeyear as FundRank_threeyear, 
+    FundRank.thisyear as FundRank_thisyear, FundRank.setup as FundRank_setup, FundRank.category as FundRank_category, 
+    FundRank.score as FundRank_score
+  </sql>
+    <!--
+      <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from fund_rank FundRank
+        where FundRank.id = #{id,jdbcType=BIGINT}
+      </select>
+      <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from fund_rank
+        where id = #{id,jdbcType=BIGINT}
+      </delete>
+      <insert id="insert" parameterType="com.fundrank.model.FundRank">
+        insert into fund_rank (id, fund_id, fund_name,
+          fund_name_abbr, cal_date, net_asset_value,
+          accumulative, oneday, oneweek,
+          onemonth, threemonth, sixmonth,
+          oneyear, twoyear, threeyear,
+          thisyear, setup, category,
+          score)
+        values (#{id,jdbcType=BIGINT}, #{fundId,jdbcType=VARCHAR}, #{fundName,jdbcType=VARCHAR},
+          #{fundNameAbbr,jdbcType=VARCHAR}, #{calDate,jdbcType=VARCHAR}, #{netAssetValue,jdbcType=REAL},
+          #{accumulative,jdbcType=REAL}, #{oneday,jdbcType=REAL}, #{oneweek,jdbcType=REAL},
+          #{onemonth,jdbcType=REAL}, #{threemonth,jdbcType=REAL}, #{sixmonth,jdbcType=REAL},
+          #{oneyear,jdbcType=REAL}, #{twoyear,jdbcType=REAL}, #{threeyear,jdbcType=REAL},
+          #{thisyear,jdbcType=REAL}, #{setup,jdbcType=REAL}, #{category,jdbcType=VARCHAR},
+          #{score,jdbcType=REAL})
+      </insert>
+      <insert id="insertSelective" parameterType="com.fundrank.model.FundRank">
+        insert into fund_rank
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+          <if test="id != null">
+            id,
+          </if>
+          <if test="fundId != null">
+            fund_id,
+          </if>
+          <if test="fundName != null">
+            fund_name,
+          </if>
+          <if test="fundNameAbbr != null">
+            fund_name_abbr,
+          </if>
+          <if test="calDate != null">
+            cal_date,
+          </if>
+          <if test="netAssetValue != null">
+            net_asset_value,
+          </if>
+          <if test="accumulative != null">
+            accumulative,
+          </if>
+          <if test="oneday != null">
+            oneday,
+          </if>
+          <if test="oneweek != null">
+            oneweek,
+          </if>
+          <if test="onemonth != null">
+            onemonth,
+          </if>
+          <if test="threemonth != null">
+            threemonth,
+          </if>
+          <if test="sixmonth != null">
+            sixmonth,
+          </if>
+          <if test="oneyear != null">
+            oneyear,
+          </if>
+          <if test="twoyear != null">
+            twoyear,
+          </if>
+          <if test="threeyear != null">
+            threeyear,
+          </if>
+          <if test="thisyear != null">
+            thisyear,
+          </if>
+          <if test="setup != null">
+            setup,
+          </if>
+          <if test="category != null">
+            category,
+          </if>
+          <if test="score != null">
+            score,
+          </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+          <if test="id != null">
+            #{id,jdbcType=BIGINT},
+          </if>
+          <if test="fundId != null">
+            #{fundId,jdbcType=VARCHAR},
+          </if>
+          <if test="fundName != null">
+            #{fundName,jdbcType=VARCHAR},
+          </if>
+          <if test="fundNameAbbr != null">
+            #{fundNameAbbr,jdbcType=VARCHAR},
+          </if>
+          <if test="calDate != null">
+            #{calDate,jdbcType=VARCHAR},
+          </if>
+          <if test="netAssetValue != null">
+            #{netAssetValue,jdbcType=REAL},
+          </if>
+          <if test="accumulative != null">
+            #{accumulative,jdbcType=REAL},
+          </if>
+          <if test="oneday != null">
+            #{oneday,jdbcType=REAL},
+          </if>
+          <if test="oneweek != null">
+            #{oneweek,jdbcType=REAL},
+          </if>
+          <if test="onemonth != null">
+            #{onemonth,jdbcType=REAL},
+          </if>
+          <if test="threemonth != null">
+            #{threemonth,jdbcType=REAL},
+          </if>
+          <if test="sixmonth != null">
+            #{sixmonth,jdbcType=REAL},
+          </if>
+          <if test="oneyear != null">
+            #{oneyear,jdbcType=REAL},
+          </if>
+          <if test="twoyear != null">
+            #{twoyear,jdbcType=REAL},
+          </if>
+          <if test="threeyear != null">
+            #{threeyear,jdbcType=REAL},
+          </if>
+          <if test="thisyear != null">
+            #{thisyear,jdbcType=REAL},
+          </if>
+          <if test="setup != null">
+            #{setup,jdbcType=REAL},
+          </if>
+          <if test="category != null">
+            #{category,jdbcType=VARCHAR},
+          </if>
+          <if test="score != null">
+            #{score,jdbcType=REAL},
+          </if>
+        </trim>
+      </insert>
+      <update id="updateByPrimaryKeySelective" parameterType="com.fundrank.model.FundRank">
+        update fund_rank
+        <set>
+          <if test="fundId != null">
+            fund_id = #{fundId,jdbcType=VARCHAR},
+          </if>
+          <if test="fundName != null">
+            fund_name = #{fundName,jdbcType=VARCHAR},
+          </if>
+          <if test="fundNameAbbr != null">
+            fund_name_abbr = #{fundNameAbbr,jdbcType=VARCHAR},
+          </if>
+          <if test="calDate != null">
+            cal_date = #{calDate,jdbcType=VARCHAR},
+          </if>
+          <if test="netAssetValue != null">
+            net_asset_value = #{netAssetValue,jdbcType=REAL},
+          </if>
+          <if test="accumulative != null">
+            accumulative = #{accumulative,jdbcType=REAL},
+          </if>
+          <if test="oneday != null">
+            oneday = #{oneday,jdbcType=REAL},
+          </if>
+          <if test="oneweek != null">
+            oneweek = #{oneweek,jdbcType=REAL},
+          </if>
+          <if test="onemonth != null">
+            onemonth = #{onemonth,jdbcType=REAL},
+          </if>
+          <if test="threemonth != null">
+            threemonth = #{threemonth,jdbcType=REAL},
+          </if>
+          <if test="sixmonth != null">
+            sixmonth = #{sixmonth,jdbcType=REAL},
+          </if>
+          <if test="oneyear != null">
+            oneyear = #{oneyear,jdbcType=REAL},
+          </if>
+          <if test="twoyear != null">
+            twoyear = #{twoyear,jdbcType=REAL},
+          </if>
+          <if test="threeyear != null">
+            threeyear = #{threeyear,jdbcType=REAL},
+          </if>
+          <if test="thisyear != null">
+            thisyear = #{thisyear,jdbcType=REAL},
+          </if>
+          <if test="setup != null">
+            setup = #{setup,jdbcType=REAL},
+          </if>
+          <if test="category != null">
+            category = #{category,jdbcType=VARCHAR},
+          </if>
+          <if test="score != null">
+            score = #{score,jdbcType=REAL},
+          </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+      </update>
+      <update id="updateByPrimaryKey" parameterType="com.fundrank.model.FundRank">
+        update fund_rank
+        set fund_id = #{fundId,jdbcType=VARCHAR},
+          fund_name = #{fundName,jdbcType=VARCHAR},
+          fund_name_abbr = #{fundNameAbbr,jdbcType=VARCHAR},
+          cal_date = #{calDate,jdbcType=VARCHAR},
+          net_asset_value = #{netAssetValue,jdbcType=REAL},
+          accumulative = #{accumulative,jdbcType=REAL},
+          oneday = #{oneday,jdbcType=REAL},
+          oneweek = #{oneweek,jdbcType=REAL},
+          onemonth = #{onemonth,jdbcType=REAL},
+          threemonth = #{threemonth,jdbcType=REAL},
+          sixmonth = #{sixmonth,jdbcType=REAL},
+          oneyear = #{oneyear,jdbcType=REAL},
+          twoyear = #{twoyear,jdbcType=REAL},
+          threeyear = #{threeyear,jdbcType=REAL},
+          thisyear = #{thisyear,jdbcType=REAL},
+          setup = #{setup,jdbcType=REAL},
+          category = #{category,jdbcType=VARCHAR},
+          score = #{score,jdbcType=REAL}
+        where id = #{id,jdbcType=BIGINT}
+      </update>
+    -->
+
+    <!-- id 固定的 findPaging parameterType 固定的 pageModel params.entity固定写法 -->
+    <select id="findPage" parameterType="fundRank" resultMap="FundRankRM">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM
+        fund_rank as FundRank
+        <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(orderColumn)">
+            ORDER BY  ${orderColumn} ${orderBy}
+        </if>
+        <!-- <where>
+           <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(name)">
+             AND .`name` like CONCAT('%',"\\" #{name},'%' )
+           </if>
+           <if test="gender != null">
+             AND s.`gender`=#{gender}
+           </if>
+           <if test="age != null">
+             AND s.`age`=#{age}
+           </if>
+           <if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(address)">
+             AND m.`address` like CONCAT('%',"\\" #{address},'%' )
+           </if>
+         </where>-->
+    </select>
+</mapper>
